@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Analyze C source files using Clang, Cppcheck and MISRA."
+    >
+
+    <title>C Code Static Analysis</title>
+
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <div class="brand-icon">C</div>
+            <div>
+                <h1>C Code Analyzer</h1>
+                <p>Static analysis workspace</p>
+            </div>
+        </div>
+
+        <div class="server-status">
+            <span id="server-indicator" class="status-dot"></span>
+            <span id="server-status">Checking backend...</span>
+        </div>
+    </header>
+
+    <main class="page-container">
+
+        <section class="hero">
+            <p class="eyebrow">CODE QUALITY AND COMPLIANCE</p>
+            <h2>Find issues before they reach production.</h2>
+            <p class="hero-description">
+                Analyze C source code using Clang, Cppcheck and MISRA C:2012.
+                Upload a file or paste your code directly.
+            </p>
+        </section>
+
+        <section class="upload-panel">
+            <div class="section-heading">
+                <div>
+                    <h2>Analyze source code</h2>
+                    <p>Choose how you want to provide your C source.</p>
+                </div>
+
+                <span class="file-type-label" id="file-type-label">
+                    C source
+                </span>
+            </div>
+
+            <div class="input-mode-switch" role="tablist">
+                <button
+                    type="button"
+                    class="mode-button active"
+                    id="file-mode-button"
+                    aria-selected="true"
+                >
+                    <span>↑</span> Upload C file
+                </button>
+
+                <button
+                    type="button"
+                    class="mode-button"
+                    id="code-mode-button"
+                    aria-selected="false"
+                >
+                    <span>&lt;/&gt;</span> Paste C code
+                </button>
+            </div>
+
+            <!-- File upload mode -->
+            <div id="file-input-panel">
+
+                <label
+                    class="drop-zone"
+                    id="drop-zone"
+                    for="file-input"
+                >
+                    <div class="upload-icon">↑</div>
+
+                    <h3>Drop your C file here</h3>
+                    <p>or <span class="choose-link">browse files</span></p>
+
+                    <span class="upload-hint" id="upload-hint">
+                        Loading upload configuration...
+                    </span>
+                </label>
+
+                <input
+                    type="file"
+                    id="file-input"
+                    hidden
+                >
+
+                <div class="selected-file hidden" id="selected-file">
+                    <div class="file-symbol">C</div>
+
+                    <div class="file-information">
+                        <strong id="selected-file-name"></strong>
+                        <span id="selected-file-size"></span>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="text-button"
+                        id="remove-file"
+                    >
+                        Remove
+                    </button>
+                </div>
+            </div>
+
+            <!-- Paste-code mode -->
+            <div id="code-input-panel" class="hidden">
+
+                <div class="editor-heading">
+                    <label for="code-editor">C source code</label>
+                    <span id="code-filename-label"></span>
+                </div>
+
+                <textarea
+                    id="code-editor"
+                    spellcheck="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    placeholder="// Paste your C source code here
+
+#include <stdio.h>
+
+int main(void)
+{
+    printf(&quot;Hello, World!&quot;);
+    return 0;
+}"
+                ></textarea>
+
+                <div class="editor-footer">
+                    <span id="code-character-count">0 characters</span>
+                    <span id="code-size-status">Enter C code to begin.</span>
+                </div>
+            </div>
+
+            <div class="upload-actions">
+                <button
+                    type="button"
+                    class="primary-button"
+                    id="analyze-button"
+                    disabled
+                >
+                    Analyze C file
+                </button>
+
+                <span id="upload-status" class="upload-status">
+                    Select a file to continue.
+                </span>
+            </div>
+        </section>
+
+        <section class="results-section hidden" id="results-section">
+
+            <div class="results-heading">
+                <div>
+                    <p class="eyebrow">ANALYSIS REPORT</p>
+                    <h2>Analysis results</h2>
+                    <p id="report-file-name" class="muted-text"></p>
+                </div>
+
+                <a
+                    id="download-button"
+                    class="secondary-button"
+                    href="#"
+                >
+                    Download JSON
+                </a>
+            </div>
+
+            <div class="report-meta">
+                <span id="report-status"></span>
+                <span id="report-id"></span>
+            </div>
+
+            <div class="summary-grid">
+
+                <article class="summary-card">
+                    <span class="summary-label">Total findings</span>
+                    <strong id="total-findings">0</strong>
+                    <span class="summary-description">
+                        All reported findings
+                    </span>
+                </article>
+
+                <article class="summary-card">
+                    <span class="summary-label">Programming defects</span>
+                    <strong id="programming-defects">0</strong>
+                    <span class="summary-description">Static analysis</span>
+                </article>
+
+                <article class="summary-card">
+                    <span class="summary-label">Code quality</span>
+                    <strong id="quality-findings">0</strong>
+                    <span class="summary-description">Style and quality</span>
+                </article>
+
+                <article class="summary-card">
+                    <span class="summary-label">MISRA occurrences</span>
+                    <strong id="misra-findings">0</strong>
+                    <span class="summary-description">
+                        Individual rule locations
+                    </span>
+                </article>
+
+                <article class="summary-card">
+                    <span class="summary-label">Unique MISRA rules</span>
+                    <strong id="unique-misra-rules">0</strong>
+                    <span class="summary-description">
+                        Distinct rule IDs
+                    </span>
+                </article>
+
+            </div>
+
+            <section class="findings-panel">
+
+                <div class="findings-heading">
+                    <div>
+                        <h2>Findings</h2>
+                        <p id="visible-count" class="muted-text"></p>
+                    </div>
+
+                    <input
+                        type="search"
+                        id="search-input"
+                        class="search-input"
+                        placeholder="Search findings..."
+                    >
+                </div>
+
+                <div class="filter-bar">
+
+                    <button class="filter-button active" data-filter="all">
+                        All
+                    </button>
+
+                    <button
+                        class="filter-button"
+                        data-filter="static_analysis"
+                    >
+                        Programming defects
+                    </button>
+
+                    <button
+                        class="filter-button"
+                        data-filter="code_quality"
+                    >
+                        Code quality
+                    </button>
+
+                    <button
+                        class="filter-button"
+                        data-filter="misra"
+                    >
+                        MISRA
+                    </button>
+
+                </div>
+
+                <div id="findings-container" class="findings-container">
+                </div>
+
+                <div id="empty-findings" class="empty-state hidden">
+                    No findings match your search.
+                </div>
+
+            </section>
+
+            <section class="tool-errors hidden" id="tool-errors">
+                <h3>Analyzer errors</h3>
+                <div id="tool-errors-container"></div>
+            </section>
+
+        </section>
+
+        <div id="error-banner" class="error-banner hidden"></div>
+
+        <footer>
+            <p>
+                C Code Static Analysis · Clang · Cppcheck · MISRA
+            </p>
+            <p>Uploaded or pasted source code is analyzed, not executed.</p>
+        </footer>
+
+    </main>
+</body>
+</html>

@@ -1,0 +1,63 @@
+import json
+import sys
+
+from pathlib import Path
+
+from backend.clang_analyzer import run_clang_analysis
+from backend.cppcheck_analyzer import (
+    run_cppcheck_analysis,
+    run_misra_analysis
+)
+from backend.result_processor import build_analysis_report
+
+
+def main():
+
+    if len(sys.argv) < 2:
+        print("Usage: python test_pipeline.py <C_SOURCE_FILE>")
+        sys.exit(1)
+
+    file_path = Path(sys.argv[1]).resolve()
+
+    if not file_path.is_file():
+        print(f"Input file does not exist: {file_path}")
+        sys.exit(1)
+
+    if file_path.suffix.lower() != ".c":
+        print("Please provide a C source file.")
+        sys.exit(1)
+
+    print("Running Clang...")
+    clang_result = run_clang_analysis(str(file_path))
+
+    print("Running Cppcheck...")
+    cppcheck_result = run_cppcheck_analysis(str(file_path))
+
+    print("Running MISRA analysis...")
+    misra_result = run_misra_analysis(str(file_path))
+
+    report = build_analysis_report(
+        file_name=file_path.name,
+        clang_result=clang_result,
+        cppcheck_result=cppcheck_result,
+        misra_result=misra_result
+    )
+
+    reports_directory = Path("reports")
+    reports_directory.mkdir(exist_ok=True)
+
+    output_file = reports_directory / "analysis_result.json"
+
+    output_file.write_text(
+        json.dumps(report, indent=4),
+        encoding="utf-8"
+    )
+
+    print("\nAnalysis completed!")
+    print(json.dumps(report["summary"], indent=4))
+
+    print(f"\nJSON report saved at: {output_file.resolve()}")
+
+
+if __name__ == "__main__":
+    main()

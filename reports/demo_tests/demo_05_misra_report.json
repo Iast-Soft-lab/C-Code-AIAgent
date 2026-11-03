@@ -1,0 +1,222 @@
+{
+    "schema_version": "1.0",
+    "file_name": "demo_05_misra.c",
+    "analysis_status": "completed",
+    "tools_used": [
+        "Clang Static Analyzer",
+        "Cppcheck",
+        "Cppcheck MISRA Addon"
+    ],
+    "summary": {
+        "total_findings": 7,
+        "programming_defects": 0,
+        "code_quality_findings": 0,
+        "misra_violations": 7
+    },
+    "tool_errors": [],
+    "findings": [
+        {
+            "file": "demo_05_misra.c",
+            "line": 14,
+            "column": 25,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 2.7.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-2.7",
+            "tool_issue_id": "misra-c2012-2.7",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 2.7."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-2.7",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 2.7.",
+                    "column": 25,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F001"
+        },
+        {
+            "file": "demo_05_misra.c",
+            "line": 8,
+            "column": 5,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-8.4",
+            "tool_issue_id": "misra-c2012-8.4",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-8.4",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+                    "column": 5,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F002"
+        },
+        {
+            "file": "demo_05_misra.c",
+            "line": 20,
+            "column": 6,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-8.4",
+            "tool_issue_id": "misra-c2012-8.4",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-8.4",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+                    "column": 6,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F003"
+        },
+        {
+            "file": "demo_05_misra.c",
+            "line": 26,
+            "column": 6,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-8.4",
+            "tool_issue_id": "misra-c2012-8.4",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-8.4",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+                    "column": 6,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F004"
+        },
+        {
+            "file": "demo_05_misra.c",
+            "line": 22,
+            "column": 20,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 17.7.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-17.7",
+            "tool_issue_id": "misra-c2012-17.7",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 17.7."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-17.7",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 17.7.",
+                    "column": 20,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F005"
+        },
+        {
+            "file": "demo_05_misra.c",
+            "line": 28,
+            "column": 11,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 17.7.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-17.7",
+            "tool_issue_id": "misra-c2012-17.7",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 17.7."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-17.7",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 17.7.",
+                    "column": 11,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F006"
+        },
+        {
+            "file": "demo_05_misra.c",
+            "line": 5,
+            "column": 0,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 21.6.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-21.6",
+            "tool_issue_id": "misra-c2012-21.6",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 21.6."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-21.6",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 21.6.",
+                    "column": 0,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F007"
+        }
+    ]
+}

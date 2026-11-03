@@ -1,0 +1,490 @@
+{
+    "schema_version": "1.0",
+    "file_name": "demo_04_memory_management.c",
+    "analysis_status": "completed",
+    "tools_used": [
+        "Clang Static Analyzer",
+        "Cppcheck",
+        "Cppcheck MISRA Addon"
+    ],
+    "summary": {
+        "total_findings": 16,
+        "programming_defects": 4,
+        "code_quality_findings": 0,
+        "misra_violations": 12
+    },
+    "tool_errors": [],
+    "findings": [
+        {
+            "file": "demo_04_memory_management.c",
+            "line": 19,
+            "column": 5,
+            "category": "General",
+            "issue_type": "general_static_analysis_issue",
+            "severity": "warning",
+            "message": "Potential leak of memory pointed to by 'buffer'",
+            "analysis_type": "static_analysis",
+            "detected_by": [
+                "Clang"
+            ],
+            "tool_issue_id": "unix.Malloc",
+            "messages": [
+                "Potential leak of memory pointed to by 'buffer'"
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Clang",
+                    "tool_issue_id": "unix.Malloc",
+                    "severity": "warning",
+                    "message": "Potential leak of memory pointed to by 'buffer'",
+                    "column": 5,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F001"
+        },
+        {
+            "file": "demo_04_memory_management.c",
+            "line": 36,
+            "column": 12,
+            "category": "General",
+            "issue_type": "general_static_analysis_issue",
+            "severity": "warning",
+            "message": "Use of memory after it is freed",
+            "analysis_type": "static_analysis",
+            "detected_by": [
+                "Clang"
+            ],
+            "tool_issue_id": "unix.Malloc",
+            "messages": [
+                "Use of memory after it is freed"
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Clang",
+                    "tool_issue_id": "unix.Malloc",
+                    "severity": "warning",
+                    "message": "Use of memory after it is freed",
+                    "column": 12,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F002"
+        },
+        {
+            "file": "demo_04_memory_management.c",
+            "line": 51,
+            "column": 5,
+            "category": "General",
+            "issue_type": "general_static_analysis_issue",
+            "severity": "error",
+            "message": "Attempt to free released memory",
+            "analysis_type": "static_analysis",
+            "detected_by": [
+                "Clang",
+                "Cppcheck"
+            ],
+            "tool_issue_id": "unix.Malloc",
+            "messages": [
+                "Attempt to free released memory",
+                "Memory pointed to by 'buffer' is freed twice."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Clang",
+                    "tool_issue_id": "unix.Malloc",
+                    "severity": "warning",
+                    "message": "Attempt to free released memory",
+                    "column": 5,
+                    "cwe": null
+                },
+                {
+                    "tool": "Cppcheck",
+                    "tool_issue_id": "doubleFree",
+                    "severity": "error",
+                    "message": "Memory pointed to by 'buffer' is freed twice.",
+                    "column": null,
+                    "cwe": "415"
+                }
+            ],
+            "finding_id": "F003"
+        },
+        {
+            "file": "demo_04_memory_management.c",
+            "line": 19,
+            "column": null,
+            "category": "Memory Management",
+            "issue_type": "memory_leak",
+            "severity": "error",
+            "message": "Memory leak: buffer",
+            "analysis_type": "static_analysis",
+            "detected_by": [
+                "Cppcheck"
+            ],
+            "tool_issue_id": "memleak",
+            "cwe": "401",
+            "messages": [
+                "Memory leak: buffer"
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck",
+                    "tool_issue_id": "memleak",
+                    "severity": "error",
+                    "message": "Memory leak: buffer",
+                    "column": null,
+                    "cwe": "401"
+                }
+            ],
+            "finding_id": "F004"
+        },
+        {
+            "file": "demo_04_memory_management.c",
+            "line": 7,
+            "column": 5,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-8.4",
+            "tool_issue_id": "misra-c2012-8.4",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-8.4",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+                    "column": 5,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F005"
+        },
+        {
+            "file": "demo_04_memory_management.c",
+            "line": 22,
+            "column": 5,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-8.4",
+            "tool_issue_id": "misra-c2012-8.4",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-8.4",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+                    "column": 5,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F006"
+        },
+        {
+            "file": "demo_04_memory_management.c",
+            "line": 39,
+            "column": 5,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-8.4",
+            "tool_issue_id": "misra-c2012-8.4",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-8.4",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+                    "column": 5,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F007"
+        },
+        {
+            "file": "demo_04_memory_management.c",
+            "line": 9,
+            "column": 28,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 10.4.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-10.4",
+            "tool_issue_id": "misra-c2012-10.4",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 10.4."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-10.4",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 10.4.",
+                    "column": 28,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F008"
+        },
+        {
+            "file": "demo_04_memory_management.c",
+            "line": 24,
+            "column": 17,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 11.5.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-11.5",
+            "tool_issue_id": "misra-c2012-11.5",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 11.5."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-11.5",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 11.5.",
+                    "column": 17,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F009"
+        },
+        {
+            "file": "demo_04_memory_management.c",
+            "line": 41,
+            "column": 17,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 11.5.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-11.5",
+            "tool_issue_id": "misra-c2012-11.5",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 11.5."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-11.5",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 11.5.",
+                    "column": 17,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F010"
+        },
+        {
+            "file": "demo_04_memory_management.c",
+            "line": 13,
+            "column": 9,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 15.5.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-15.5",
+            "tool_issue_id": "misra-c2012-15.5",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 15.5."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-15.5",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 15.5.",
+                    "column": 9,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F011"
+        },
+        {
+            "file": "demo_04_memory_management.c",
+            "line": 28,
+            "column": 9,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 15.5.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-15.5",
+            "tool_issue_id": "misra-c2012-15.5",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 15.5."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-15.5",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 15.5.",
+                    "column": 9,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F012"
+        },
+        {
+            "file": "demo_04_memory_management.c",
+            "line": 45,
+            "column": 9,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 15.5.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-15.5",
+            "tool_issue_id": "misra-c2012-15.5",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 15.5."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-15.5",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 15.5.",
+                    "column": 9,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F013"
+        },
+        {
+            "file": "demo_04_memory_management.c",
+            "line": 33,
+            "column": 9,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 21.3.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-21.3",
+            "tool_issue_id": "misra-c2012-21.3",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 21.3."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-21.3",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 21.3.",
+                    "column": 9,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F014"
+        },
+        {
+            "file": "demo_04_memory_management.c",
+            "line": 48,
+            "column": 9,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 21.3.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-21.3",
+            "tool_issue_id": "misra-c2012-21.3",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 21.3."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-21.3",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 21.3.",
+                    "column": 9,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F015"
+        },
+        {
+            "file": "demo_04_memory_management.c",
+            "line": 51,
+            "column": 9,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 21.3.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-21.3",
+            "tool_issue_id": "misra-c2012-21.3",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 21.3."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-21.3",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 21.3.",
+                    "column": 9,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F016"
+        }
+    ]
+}

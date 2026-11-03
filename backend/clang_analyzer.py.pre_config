@@ -1,0 +1,50 @@
+import subprocess
+from pathlib import Path
+
+
+def run_clang_analysis(file_path: str):
+
+    file_path = Path(file_path).resolve()
+
+    if not file_path.is_file():
+        raise FileNotFoundError(f"File not found: {file_path}")
+
+    command = [
+        "clang",
+        "--analyze",
+        "-std=c11",
+        "-Xanalyzer",
+        "-analyzer-output=text",
+        str(file_path)
+    ]
+
+    try:
+        result = subprocess.run(
+            command,
+            capture_output=True,
+            text=True,
+            timeout=30,
+            check=False
+        )
+
+        return {
+            "tool": "Clang Static Analyzer",
+            "file": file_path.name,
+            "return_code": result.returncode,
+            "stdout": result.stdout,
+            "stderr": result.stderr
+        }
+
+    except subprocess.TimeoutExpired:
+        return {
+            "tool": "Clang Static Analyzer",
+            "file": file_path.name,
+            "error": "Analysis timed out"
+        }
+
+    except FileNotFoundError:
+        return {
+            "tool": "Clang Static Analyzer",
+            "file": file_path.name,
+            "error": "Clang is not installed or unavailable"
+        }

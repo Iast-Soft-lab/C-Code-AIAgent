@@ -1,0 +1,211 @@
+{
+    "schema_version": "1.0",
+    "file_name": "demo_03_arithmetic.c",
+    "analysis_status": "completed",
+    "tools_used": [
+        "Clang Static Analyzer",
+        "Cppcheck",
+        "Cppcheck MISRA Addon"
+    ],
+    "summary": {
+        "total_findings": 6,
+        "programming_defects": 2,
+        "code_quality_findings": 0,
+        "misra_violations": 4
+    },
+    "tool_errors": [],
+    "findings": [
+        {
+            "file": "demo_03_arithmetic.c",
+            "line": 9,
+            "column": 22,
+            "category": "Arithmetic",
+            "issue_type": "division_by_zero",
+            "severity": "error",
+            "message": "Division by zero",
+            "analysis_type": "static_analysis",
+            "detected_by": [
+                "Clang",
+                "Cppcheck"
+            ],
+            "tool_issue_id": "core.DivideZero",
+            "messages": [
+                "Division by zero",
+                "Division by zero."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Clang",
+                    "tool_issue_id": "core.DivideZero",
+                    "severity": "warning",
+                    "message": "Division by zero",
+                    "column": 22,
+                    "cwe": null
+                },
+                {
+                    "tool": "Cppcheck",
+                    "tool_issue_id": "zerodiv",
+                    "severity": "error",
+                    "message": "Division by zero.",
+                    "column": null,
+                    "cwe": "369"
+                }
+            ],
+            "finding_id": "F001"
+        },
+        {
+            "file": "demo_03_arithmetic.c",
+            "line": 16,
+            "column": 16,
+            "category": "Arithmetic",
+            "issue_type": "division_by_zero",
+            "severity": "error",
+            "message": "Division by zero",
+            "analysis_type": "static_analysis",
+            "detected_by": [
+                "Clang",
+                "Cppcheck"
+            ],
+            "tool_issue_id": "core.DivideZero",
+            "messages": [
+                "Division by zero",
+                "Division by zero."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Clang",
+                    "tool_issue_id": "core.DivideZero",
+                    "severity": "warning",
+                    "message": "Division by zero",
+                    "column": 16,
+                    "cwe": null
+                },
+                {
+                    "tool": "Cppcheck",
+                    "tool_issue_id": "zerodiv",
+                    "severity": "error",
+                    "message": "Division by zero.",
+                    "column": null,
+                    "cwe": "369"
+                }
+            ],
+            "finding_id": "F002"
+        },
+        {
+            "file": "demo_03_arithmetic.c",
+            "line": 5,
+            "column": 5,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-8.4",
+            "tool_issue_id": "misra-c2012-8.4",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-8.4",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+                    "column": 5,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F003"
+        },
+        {
+            "file": "demo_03_arithmetic.c",
+            "line": 12,
+            "column": 5,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-8.4",
+            "tool_issue_id": "misra-c2012-8.4",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-8.4",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+                    "column": 5,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F004"
+        },
+        {
+            "file": "demo_03_arithmetic.c",
+            "line": 19,
+            "column": 5,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-8.4",
+            "tool_issue_id": "misra-c2012-8.4",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-8.4",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+                    "column": 5,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F005"
+        },
+        {
+            "file": "demo_03_arithmetic.c",
+            "line": 23,
+            "column": 9,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 15.5.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-15.5",
+            "tool_issue_id": "misra-c2012-15.5",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 15.5."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-15.5",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 15.5.",
+                    "column": 9,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F006"
+        }
+    ]
+}

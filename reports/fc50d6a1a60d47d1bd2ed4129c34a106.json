@@ -1,0 +1,443 @@
+{
+    "schema_version": "1.0",
+    "file_name": "analysis_demo.c",
+    "analysis_status": "completed",
+    "tools_used": [
+        "Clang Static Analyzer",
+        "Cppcheck",
+        "Cppcheck MISRA Addon"
+    ],
+    "summary": {
+        "total_findings": 14,
+        "programming_defects": 5,
+        "code_quality_findings": 1,
+        "misra_violations": 8
+    },
+    "tool_errors": [],
+    "findings": [
+        {
+            "file": "analysis_demo.c",
+            "line": 9,
+            "column": 5,
+            "category": "Undefined Behaviour",
+            "issue_type": "undefined_value_return",
+            "severity": "warning",
+            "message": "Undefined or garbage value returned to caller",
+            "analysis_type": "static_analysis",
+            "detected_by": [
+                "Clang"
+            ],
+            "tool_issue_id": "core.uninitialized.UndefReturn",
+            "messages": [
+                "Undefined or garbage value returned to caller"
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Clang",
+                    "tool_issue_id": "core.uninitialized.UndefReturn",
+                    "severity": "warning",
+                    "message": "Undefined or garbage value returned to caller",
+                    "column": 5,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F001"
+        },
+        {
+            "file": "analysis_demo.c",
+            "line": 34,
+            "column": 5,
+            "category": "Initialization",
+            "issue_type": "uninitialized_variable",
+            "severity": "error",
+            "message": "2nd function call argument is an uninitialized value",
+            "analysis_type": "static_analysis",
+            "detected_by": [
+                "Clang",
+                "Cppcheck"
+            ],
+            "tool_issue_id": "core.CallAndMessage",
+            "messages": [
+                "2nd function call argument is an uninitialized value",
+                "Uninitialized variable: result"
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Clang",
+                    "tool_issue_id": "core.CallAndMessage",
+                    "severity": "warning",
+                    "message": "2nd function call argument is an uninitialized value",
+                    "column": 5,
+                    "cwe": null
+                },
+                {
+                    "tool": "Cppcheck",
+                    "tool_issue_id": "uninitvar",
+                    "severity": "error",
+                    "message": "Uninitialized variable: result",
+                    "column": null,
+                    "cwe": "457"
+                }
+            ],
+            "finding_id": "F002"
+        },
+        {
+            "file": "analysis_demo.c",
+            "line": 9,
+            "column": null,
+            "category": "Memory Safety",
+            "issue_type": "array_out_of_bounds",
+            "severity": "error",
+            "message": "Array 'values[3]' accessed at index 5, which is out of bounds.",
+            "analysis_type": "static_analysis",
+            "detected_by": [
+                "Cppcheck"
+            ],
+            "tool_issue_id": "arrayIndexOutOfBounds",
+            "cwe": "788",
+            "messages": [
+                "Array 'values[3]' accessed at index 5, which is out of bounds."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck",
+                    "tool_issue_id": "arrayIndexOutOfBounds",
+                    "severity": "error",
+                    "message": "Array 'values[3]' accessed at index 5, which is out of bounds.",
+                    "column": null,
+                    "cwe": "788"
+                }
+            ],
+            "finding_id": "F003"
+        },
+        {
+            "file": "analysis_demo.c",
+            "line": 21,
+            "column": null,
+            "category": "Memory Safety",
+            "issue_type": "null_pointer_dereference",
+            "severity": "error",
+            "message": "Possible null pointer dereference: ptr",
+            "analysis_type": "static_analysis",
+            "detected_by": [
+                "Cppcheck"
+            ],
+            "tool_issue_id": "nullPointer",
+            "cwe": "476",
+            "messages": [
+                "Possible null pointer dereference: ptr",
+                "Null pointer dereference: ptr"
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck",
+                    "tool_issue_id": "nullPointer",
+                    "severity": "warning",
+                    "message": "Possible null pointer dereference: ptr",
+                    "column": null,
+                    "cwe": "476"
+                },
+                {
+                    "tool": "Cppcheck",
+                    "tool_issue_id": "ctunullpointer",
+                    "severity": "error",
+                    "message": "Null pointer dereference: ptr",
+                    "column": null,
+                    "cwe": "476"
+                }
+            ],
+            "finding_id": "F004"
+        },
+        {
+            "file": "analysis_demo.c",
+            "line": 15,
+            "column": null,
+            "category": "Arithmetic",
+            "issue_type": "division_by_zero",
+            "severity": "error",
+            "message": "Division by zero.",
+            "analysis_type": "static_analysis",
+            "detected_by": [
+                "Cppcheck"
+            ],
+            "tool_issue_id": "zerodiv",
+            "cwe": "369",
+            "messages": [
+                "Division by zero."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck",
+                    "tool_issue_id": "zerodiv",
+                    "severity": "error",
+                    "message": "Division by zero.",
+                    "column": null,
+                    "cwe": "369"
+                }
+            ],
+            "finding_id": "F005"
+        },
+        {
+            "file": "analysis_demo.c",
+            "line": 7,
+            "column": null,
+            "category": "Code Quality",
+            "issue_type": "const_improvement",
+            "severity": "style",
+            "message": "Variable 'values' can be declared with const",
+            "analysis_type": "code_quality",
+            "detected_by": [
+                "Cppcheck"
+            ],
+            "tool_issue_id": "constVariable",
+            "cwe": "398",
+            "messages": [
+                "Variable 'values' can be declared with const"
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck",
+                    "tool_issue_id": "constVariable",
+                    "severity": "style",
+                    "message": "Variable 'values' can be declared with const",
+                    "column": null,
+                    "cwe": "398"
+                }
+            ],
+            "finding_id": "F006"
+        },
+        {
+            "file": "analysis_demo.c",
+            "line": 24,
+            "column": 27,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 2.7.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-2.7",
+            "tool_issue_id": "misra-c2012-2.7",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 2.7."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-2.7",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 2.7.",
+                    "column": 27,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F007"
+        },
+        {
+            "file": "analysis_demo.c",
+            "line": 5,
+            "column": 5,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-8.4",
+            "tool_issue_id": "misra-c2012-8.4",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-8.4",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+                    "column": 5,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F008"
+        },
+        {
+            "file": "analysis_demo.c",
+            "line": 13,
+            "column": 5,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-8.4",
+            "tool_issue_id": "misra-c2012-8.4",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-8.4",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+                    "column": 5,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F009"
+        },
+        {
+            "file": "analysis_demo.c",
+            "line": 19,
+            "column": 6,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-8.4",
+            "tool_issue_id": "misra-c2012-8.4",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-8.4",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+                    "column": 6,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F010"
+        },
+        {
+            "file": "analysis_demo.c",
+            "line": 34,
+            "column": 11,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 17.7.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-17.7",
+            "tool_issue_id": "misra-c2012-17.7",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 17.7."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-17.7",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 17.7.",
+                    "column": 11,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F011"
+        },
+        {
+            "file": "analysis_demo.c",
+            "line": 36,
+            "column": 11,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 17.7.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-17.7",
+            "tool_issue_id": "misra-c2012-17.7",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 17.7."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-17.7",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 17.7.",
+                    "column": 11,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F012"
+        },
+        {
+            "file": "analysis_demo.c",
+            "line": 38,
+            "column": 11,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 17.7.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-17.7",
+            "tool_issue_id": "misra-c2012-17.7",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 17.7."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-17.7",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 17.7.",
+                    "column": 11,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F013"
+        },
+        {
+            "file": "analysis_demo.c",
+            "line": 1,
+            "column": 0,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 21.6.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-21.6",
+            "tool_issue_id": "misra-c2012-21.6",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 21.6."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-21.6",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 21.6.",
+                    "column": 0,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F014"
+        }
+    ],
+    "report_id": "fc50d6a1a60d47d1bd2ed4129c34a106"
+}

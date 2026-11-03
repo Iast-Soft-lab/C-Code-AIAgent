@@ -1,0 +1,153 @@
+{
+    "input": {
+        "allowed_extensions": [
+            ".c"
+        ]
+    },
+    "tools": {
+        "clang": {
+            "executable": "clang",
+            "display_name": "Clang Static Analyzer",
+            "timeout_seconds": 30,
+            "arguments": [
+                "--analyze",
+                "-std=c11",
+                "-Xanalyzer",
+                "-analyzer-output=text"
+            ]
+        },
+        "cppcheck": {
+            "executable": "cppcheck",
+            "display_name": "Cppcheck",
+            "timeout_seconds": 60,
+            "arguments": [
+                "--xml",
+                "--xml-version=2",
+                "--enable=warning,style,performance,portability",
+                "--std=c11",
+                "--language=c"
+            ]
+        },
+        "misra": {
+            "executable": "cppcheck",
+            "display_name": "Cppcheck MISRA Addon",
+            "timeout_seconds": 60,
+            "arguments": [
+                "--addon=misra.py",
+                "--enable=style",
+                "--std=c11",
+                "--language=c"
+            ]
+        }
+    },
+    "report": {
+        "output_directory": "reports",
+        "filename": "analysis_result.json",
+        "json_indent": 4,
+        "api_filename_template": "{report_id}.json"
+    },
+    "classification": {
+        "issue_rules": [
+            {
+                "match_any": [
+                    "arrayindexoutofbounds"
+                ],
+                "issue_type": "array_out_of_bounds",
+                "category": "Memory Safety"
+            },
+            {
+                "match_any": [
+                    "zerodiv",
+                    "division by zero"
+                ],
+                "issue_type": "division_by_zero",
+                "category": "Arithmetic"
+            },
+            {
+                "match_any": [
+                    "nullpointer",
+                    "null pointer"
+                ],
+                "issue_type": "null_pointer_dereference",
+                "category": "Memory Safety"
+            },
+            {
+                "match_any": [
+                    "undefreturn",
+                    "undefined or garbage value"
+                ],
+                "issue_type": "undefined_value_return",
+                "category": "Undefined Behaviour"
+            },
+            {
+                "match_any": [
+                    "uninit",
+                    "uninitialized"
+                ],
+                "issue_type": "uninitialized_variable",
+                "category": "Initialization"
+            },
+            {
+                "match_any": [
+                    "constvariable"
+                ],
+                "issue_type": "const_improvement",
+                "category": "Code Quality"
+            },
+            {
+                "match_any": [
+                    "memory leak",
+                    "memleak"
+                ],
+                "issue_type": "memory_leak",
+                "category": "Memory Management"
+            },
+            {
+                "match_any": [
+                    "pointer"
+                ],
+                "issue_type": "pointer_issue",
+                "category": "Memory Safety"
+            },
+            {
+                "match_any": [
+                    "array"
+                ],
+                "issue_type": "array_issue",
+                "category": "Memory Safety"
+            }
+        ],
+        "default_issue": {
+            "issue_type": "general_static_analysis_issue",
+            "category": "General"
+        },
+        "severity_rank": {
+            "error": 4,
+            "warning": 3,
+            "style": 2,
+            "information": 1,
+            "unknown": 0
+        }
+    },
+    "upload": {
+        "max_file_size_bytes": 5242880,
+        "read_chunk_bytes": 65536,
+        "temporary_directory": "uploads/tmp",
+        "temporary_directory_prefix": "analysis-",
+        "pasted_code_filename": "pasted_source.c"
+    },
+    "api": {
+        "title": "C Code Static Analysis API",
+        "version": "1.0.0",
+        "description": "Upload C source files and analyze them using Clang, Cppcheck and the Cppcheck MISRA addon.",
+        "health_route": "/health",
+        "analyze_route": "/api/analyze",
+        "download_route": "/api/reports/{report_id}/download",
+        "docs_url": "/docs",
+        "openapi_url": "/openapi.json",
+        "ui_config_route": "/api/ui-config"
+    },
+    "frontend": {
+        "static_directory": "frontend"
+    }
+}

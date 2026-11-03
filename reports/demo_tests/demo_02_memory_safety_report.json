@@ -1,0 +1,326 @@
+{
+    "schema_version": "1.0",
+    "file_name": "demo_02_memory_safety.c",
+    "analysis_status": "completed",
+    "tools_used": [
+        "Clang Static Analyzer",
+        "Cppcheck",
+        "Cppcheck MISRA Addon"
+    ],
+    "summary": {
+        "total_findings": 10,
+        "programming_defects": 4,
+        "code_quality_findings": 1,
+        "misra_violations": 5
+    },
+    "tool_errors": [],
+    "findings": [
+        {
+            "file": "demo_02_memory_safety.c",
+            "line": 9,
+            "column": 5,
+            "category": "Undefined Behaviour",
+            "issue_type": "undefined_value_return",
+            "severity": "warning",
+            "message": "Undefined or garbage value returned to caller",
+            "analysis_type": "static_analysis",
+            "detected_by": [
+                "Clang"
+            ],
+            "tool_issue_id": "core.uninitialized.UndefReturn",
+            "messages": [
+                "Undefined or garbage value returned to caller"
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Clang",
+                    "tool_issue_id": "core.uninitialized.UndefReturn",
+                    "severity": "warning",
+                    "message": "Undefined or garbage value returned to caller",
+                    "column": 5,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F001"
+        },
+        {
+            "file": "demo_02_memory_safety.c",
+            "line": 16,
+            "column": 12,
+            "category": "Memory Safety",
+            "issue_type": "null_pointer_dereference",
+            "severity": "error",
+            "message": "Dereference of null pointer (loaded from variable 'pointer')",
+            "analysis_type": "static_analysis",
+            "detected_by": [
+                "Clang",
+                "Cppcheck"
+            ],
+            "tool_issue_id": "core.NullDereference",
+            "messages": [
+                "Dereference of null pointer (loaded from variable 'pointer')",
+                "Null pointer dereference: pointer"
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Clang",
+                    "tool_issue_id": "core.NullDereference",
+                    "severity": "warning",
+                    "message": "Dereference of null pointer (loaded from variable 'pointer')",
+                    "column": 12,
+                    "cwe": null
+                },
+                {
+                    "tool": "Cppcheck",
+                    "tool_issue_id": "nullPointer",
+                    "severity": "error",
+                    "message": "Null pointer dereference: pointer",
+                    "column": null,
+                    "cwe": "476"
+                }
+            ],
+            "finding_id": "F002"
+        },
+        {
+            "file": "demo_02_memory_safety.c",
+            "line": 23,
+            "column": 14,
+            "category": "Memory Safety",
+            "issue_type": "null_pointer_dereference",
+            "severity": "error",
+            "message": "Dereference of null pointer (loaded from variable 'pointer')",
+            "analysis_type": "static_analysis",
+            "detected_by": [
+                "Clang",
+                "Cppcheck"
+            ],
+            "tool_issue_id": "core.NullDereference",
+            "messages": [
+                "Dereference of null pointer (loaded from variable 'pointer')",
+                "Null pointer dereference: pointer"
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Clang",
+                    "tool_issue_id": "core.NullDereference",
+                    "severity": "warning",
+                    "message": "Dereference of null pointer (loaded from variable 'pointer')",
+                    "column": 14,
+                    "cwe": null
+                },
+                {
+                    "tool": "Cppcheck",
+                    "tool_issue_id": "nullPointer",
+                    "severity": "error",
+                    "message": "Null pointer dereference: pointer",
+                    "column": null,
+                    "cwe": "476"
+                }
+            ],
+            "finding_id": "F003"
+        },
+        {
+            "file": "demo_02_memory_safety.c",
+            "line": 9,
+            "column": null,
+            "category": "Memory Safety",
+            "issue_type": "array_out_of_bounds",
+            "severity": "error",
+            "message": "Array 'values[3]' accessed at index 3, which is out of bounds.",
+            "analysis_type": "static_analysis",
+            "detected_by": [
+                "Cppcheck"
+            ],
+            "tool_issue_id": "arrayIndexOutOfBounds",
+            "cwe": "788",
+            "messages": [
+                "Array 'values[3]' accessed at index 3, which is out of bounds."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck",
+                    "tool_issue_id": "arrayIndexOutOfBounds",
+                    "severity": "error",
+                    "message": "Array 'values[3]' accessed at index 3, which is out of bounds.",
+                    "column": null,
+                    "cwe": "788"
+                }
+            ],
+            "finding_id": "F004"
+        },
+        {
+            "file": "demo_02_memory_safety.c",
+            "line": 7,
+            "column": null,
+            "category": "Code Quality",
+            "issue_type": "const_improvement",
+            "severity": "style",
+            "message": "Variable 'values' can be declared with const",
+            "analysis_type": "code_quality",
+            "detected_by": [
+                "Cppcheck"
+            ],
+            "tool_issue_id": "constVariable",
+            "cwe": "398",
+            "messages": [
+                "Variable 'values' can be declared with const"
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck",
+                    "tool_issue_id": "constVariable",
+                    "severity": "style",
+                    "message": "Variable 'values' can be declared with const",
+                    "column": null,
+                    "cwe": "398"
+                }
+            ],
+            "finding_id": "F005"
+        },
+        {
+            "file": "demo_02_memory_safety.c",
+            "line": 5,
+            "column": 5,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-8.4",
+            "tool_issue_id": "misra-c2012-8.4",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-8.4",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+                    "column": 5,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F006"
+        },
+        {
+            "file": "demo_02_memory_safety.c",
+            "line": 12,
+            "column": 5,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-8.4",
+            "tool_issue_id": "misra-c2012-8.4",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-8.4",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+                    "column": 5,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F007"
+        },
+        {
+            "file": "demo_02_memory_safety.c",
+            "line": 19,
+            "column": 5,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-8.4",
+            "tool_issue_id": "misra-c2012-8.4",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-8.4",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+                    "column": 5,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F008"
+        },
+        {
+            "file": "demo_02_memory_safety.c",
+            "line": 14,
+            "column": 18,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 11.9.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-11.9",
+            "tool_issue_id": "misra-c2012-11.9",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 11.9."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-11.9",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 11.9.",
+                    "column": 18,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F009"
+        },
+        {
+            "file": "demo_02_memory_safety.c",
+            "line": 21,
+            "column": 18,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 11.9.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-11.9",
+            "tool_issue_id": "misra-c2012-11.9",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 11.9."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-11.9",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 11.9.",
+                    "column": 18,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F010"
+        }
+    ]
+}

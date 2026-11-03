@@ -1,0 +1,278 @@
+{
+    "schema_version": "1.0",
+    "file_name": "demo_01_uninitialized.c",
+    "analysis_status": "completed",
+    "tools_used": [
+        "Clang Static Analyzer",
+        "Cppcheck",
+        "Cppcheck MISRA Addon"
+    ],
+    "summary": {
+        "total_findings": 9,
+        "programming_defects": 4,
+        "code_quality_findings": 2,
+        "misra_violations": 3
+    },
+    "tool_errors": [],
+    "findings": [
+        {
+            "file": "demo_01_uninitialized.c",
+            "line": 9,
+            "column": 5,
+            "category": "Undefined Behaviour",
+            "issue_type": "undefined_value_return",
+            "severity": "warning",
+            "message": "Undefined or garbage value returned to caller",
+            "analysis_type": "static_analysis",
+            "detected_by": [
+                "Clang"
+            ],
+            "tool_issue_id": "core.uninitialized.UndefReturn",
+            "messages": [
+                "Undefined or garbage value returned to caller"
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Clang",
+                    "tool_issue_id": "core.uninitialized.UndefReturn",
+                    "severity": "warning",
+                    "message": "Undefined or garbage value returned to caller",
+                    "column": 5,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F001"
+        },
+        {
+            "file": "demo_01_uninitialized.c",
+            "line": 16,
+            "column": 16,
+            "category": "General",
+            "issue_type": "general_static_analysis_issue",
+            "severity": "warning",
+            "message": "The left operand of '>' is a garbage value",
+            "analysis_type": "static_analysis",
+            "detected_by": [
+                "Clang"
+            ],
+            "tool_issue_id": "core.UndefinedBinaryOperatorResult",
+            "messages": [
+                "The left operand of '>' is a garbage value"
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Clang",
+                    "tool_issue_id": "core.UndefinedBinaryOperatorResult",
+                    "severity": "warning",
+                    "message": "The left operand of '>' is a garbage value",
+                    "column": 16,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F002"
+        },
+        {
+            "file": "demo_01_uninitialized.c",
+            "line": 9,
+            "column": null,
+            "category": "Initialization",
+            "issue_type": "uninitialized_variable",
+            "severity": "error",
+            "message": "Uninitialized variable: value",
+            "analysis_type": "static_analysis",
+            "detected_by": [
+                "Cppcheck"
+            ],
+            "tool_issue_id": "uninitvar",
+            "cwe": "457",
+            "messages": [
+                "Uninitialized variable: value"
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck",
+                    "tool_issue_id": "uninitvar",
+                    "severity": "error",
+                    "message": "Uninitialized variable: value",
+                    "column": null,
+                    "cwe": "457"
+                }
+            ],
+            "finding_id": "F003"
+        },
+        {
+            "file": "demo_01_uninitialized.c",
+            "line": 16,
+            "column": null,
+            "category": "Initialization",
+            "issue_type": "uninitialized_variable",
+            "severity": "error",
+            "message": "Uninitialized variable: status",
+            "analysis_type": "static_analysis",
+            "detected_by": [
+                "Cppcheck"
+            ],
+            "tool_issue_id": "uninitvar",
+            "cwe": "457",
+            "messages": [
+                "Uninitialized variable: status"
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck",
+                    "tool_issue_id": "uninitvar",
+                    "severity": "error",
+                    "message": "Uninitialized variable: status",
+                    "column": null,
+                    "cwe": "457"
+                }
+            ],
+            "finding_id": "F004"
+        },
+        {
+            "file": "demo_01_uninitialized.c",
+            "line": 7,
+            "column": null,
+            "category": "General",
+            "issue_type": "general_static_analysis_issue",
+            "severity": "style",
+            "message": "Variable 'value' is not assigned a value.",
+            "analysis_type": "code_quality",
+            "detected_by": [
+                "Cppcheck"
+            ],
+            "tool_issue_id": "unassignedVariable",
+            "cwe": "665",
+            "messages": [
+                "Variable 'value' is not assigned a value."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck",
+                    "tool_issue_id": "unassignedVariable",
+                    "severity": "style",
+                    "message": "Variable 'value' is not assigned a value.",
+                    "column": null,
+                    "cwe": "665"
+                }
+            ],
+            "finding_id": "F005"
+        },
+        {
+            "file": "demo_01_uninitialized.c",
+            "line": 14,
+            "column": null,
+            "category": "General",
+            "issue_type": "general_static_analysis_issue",
+            "severity": "style",
+            "message": "Variable 'status' is not assigned a value.",
+            "analysis_type": "code_quality",
+            "detected_by": [
+                "Cppcheck"
+            ],
+            "tool_issue_id": "unassignedVariable",
+            "cwe": "665",
+            "messages": [
+                "Variable 'status' is not assigned a value."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck",
+                    "tool_issue_id": "unassignedVariable",
+                    "severity": "style",
+                    "message": "Variable 'status' is not assigned a value.",
+                    "column": null,
+                    "cwe": "665"
+                }
+            ],
+            "finding_id": "F006"
+        },
+        {
+            "file": "demo_01_uninitialized.c",
+            "line": 5,
+            "column": 5,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-8.4",
+            "tool_issue_id": "misra-c2012-8.4",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-8.4",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+                    "column": 5,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F007"
+        },
+        {
+            "file": "demo_01_uninitialized.c",
+            "line": 12,
+            "column": 5,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-8.4",
+            "tool_issue_id": "misra-c2012-8.4",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-8.4",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 8.4.",
+                    "column": 5,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F008"
+        },
+        {
+            "file": "demo_01_uninitialized.c",
+            "line": 18,
+            "column": 9,
+            "category": "MISRA Compliance",
+            "issue_type": "MISRA Rule Violation",
+            "severity": "style",
+            "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 15.5.",
+            "analysis_type": "misra",
+            "detected_by": [
+                "Cppcheck MISRA Addon"
+            ],
+            "misra_rule_id": "MISRA-C:2012-15.5",
+            "tool_issue_id": "misra-c2012-15.5",
+            "messages": [
+                "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 15.5."
+            ],
+            "tool_diagnostics": [
+                {
+                    "tool": "Cppcheck MISRA Addon",
+                    "tool_issue_id": "misra-c2012-15.5",
+                    "severity": "style",
+                    "message": "Cppcheck MISRA addon reported a violation of MISRA C:2012 Rule 15.5.",
+                    "column": 9,
+                    "cwe": null
+                }
+            ],
+            "finding_id": "F009"
+        }
+    ]
+}
